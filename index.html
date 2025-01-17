@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <base target="_top">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <link rel="stylesheet" href="style.css">
+
+    
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="calc.js"></script>
+    <script type="text/javascript" src="graph.js"></script>
+    
+
+    <!--
+    <style id="antiClickjack">body{display:none !important;}</style>
+     
+    <script type="text/javascript">
+      if (self.parent.location == "https://stanwgov.github.io/Pressure-Equipment-Calculator/") {
+          var acj = document.getElementById("antiClickjack");
+          acj.innerHTML = "";
+          alert(self.parent.location);
+      } else {
+        // top.location = "https://stanwgov.github.io/Pressure-Equipment-Calculator/";
+          alert("fsil");
+     }
+    </script>-->
+    
+</head>
+
+<body style="width:1000px">
+    <div class="inline form-group">
+     <label for="Type">Presssure Equipment</label>
+     <select id="Type">
+      <option selected>Pressure Vessel</option>
+      <option>Steam Generator</option>
+      <option>Piping</option>
+      <option>Transportable Container</option>
+     </select>
+    </div>
+    <div class="inline form-group">
+     <label for="Fluid">Fluid Type</label>
+     <select id="Fluid">
+      <option selected>Dangerous Gas</option>
+      <option>Non Dangerous Gas</option>
+      <option>Dangerous Liquid</option>
+      <option>Non Dangerous Liquid</option>
+     </select>
+    </div>
+    <div class="inline form-group">
+     <button id="upd"class="action">Update</button>
+    </div> 
+    <div style="float:right"class="inline form-group">  
+     <div class="block form-group">
+      <label id="unit" for="X">Volume (m3)</label>
+      <input autocomplete="off" style="width:7em"type="number" id="X">
+     </div>
+    </div>
+    <div style="float:right"class="inline form-group">  
+     <div class="block form-group">
+      <label for="P">Pressure (kPa)</label>
+      <input autocomplete="off" style="width:7em"type="number" id="P">   
+     </div>
+    </div>
+   
+    <!--SANS Category-->
+    <div style="float:right;text-align:center;vertical-align:middle"class="inline form-group">  
+     <label style="vertical-align:middle"><b>CATEGORY</b></label>
+     <div style="vertical-align:middle" class="current" id="res">Not Regulated</div>
+    </div>
+
+
+    <!-- Graph Catergory Area Labels-->
+    <div style="position:relative">
+ 
+     
+     <div id="curve_chart" style="position:relative;width:900px; height:500px;margin: 0 auto"></div>
+     <div class="CAT"name="fig1"style="position:absolute;top:350px;left:475px;font-size:0.9em"><b>Not Regulated</b></div>
+     <div class="CAT"name="fig1"style="position:absolute;top:160px;left:700px;font-size:0.9em"><b>IV</b></div>
+     <div class="CAT"name="fig1"style="position:absolute;top:230px;left:260px;font-size:0.9em"><b>SEP</b></div>
+     <div class="CAT"name="fig1"style="position:absolute;top:270px;left:650px;font-size:0.9em"><b>III</b></div>
+     <div class="CAT"name="fig1"style="position:absolute;top:270px;left:580px;font-size:0.9em"><b>II</b></div>
+     <div class="CAT"name="fig1"style="position:absolute;top:270px;left:515px;font-size:0.9em"><b>I</b></div>
+    
+     <div class="CAT"name="fig2"style="display:none;position:absolute;top:350px;left:475px;font-size:0.9em"><b>Not Regulated</b></div>
+     <div class="CAT"name="fig2"style="display:none;position:absolute;top:160px;left:700px;font-size:0.9em"><b>IV</b></div>
+     <div class="CAT"name="fig2"style="display:none;position:absolute;top:230px;left:260px;font-size:0.9em"><b>SEP</b></div>
+     <div class="CAT"name="fig2"style="display:none;position:absolute;top:270px;left:740px;font-size:0.9em"><b>III</b></div>
+     <div class="CAT"name="fig2"style="display:none;position:absolute;top:270px;left:660px;font-size:0.9em"><b>II</b></div>
+     <div class="CAT"name="fig2"style="display:none;position:absolute;top:270px;left:590px;font-size:0.9em"><b>I</b></div>
+    
+     <div class="CAT"name="fig3"style="display:none;position:absolute;top:350px;left:475px;font-size:0.9em"><b>Not Regulated</b></div>
+     <div class="CAT"name="fig3"style="display:none;position:absolute;top:125px;left:260px;font-size:0.9em"><b>II</b></div>
+     <div class="CAT"name="fig3"style="display:none;position:absolute;top:220px;left:260px;font-size:0.9em"><b>SEP</b></div>
+     <div class="CAT"name="fig3"style="display:none;position:absolute;top:125px;left:660px;font-size:0.9em"><b>III</b></div>
+     <div class="CAT"name="fig3"style="display:none;position:absolute;top:200px;left:660px;font-size:0.9em"><b>II</b></div>
+     <div class="CAT"name="fig3"style="display:none;position:absolute;top:260px;left:660px;font-size:0.9em"><b>I</b></div>
+    
+     <div class="CAT"name="fig4"style="display:none;position:absolute;top:350px;left:475px;font-size:0.9em"><b>Not Regulated</b></div>
+     <div class="CAT"name="fig4"style="display:none;position:absolute;top:190px;left:640px;font-size:0.9em"><b>I</b></div>
+     <div class="CAT"name="fig4"style="display:none;position:absolute;top:230px;left:260px;font-size:0.9em"><b>SEP</b></div>
+     <div class="CAT"name="fig4"style="display:none;position:absolute;top:120px;left:640px;font-size:0.9em"><b>II</b></div>
+     <div class="CAT"name="fig4"style="display:none;position:absolute;top:120px;left:260px;font-size:0.9em"><b>I</b></div>
+    
+     <div class="CAT"name="fig5"style="display:none;position:absolute;top:350px;left:475px;font-size:0.9em"><b>Not Regulated</b></div>
+     <div class="CAT"name="fig5"style="display:none;position:absolute;top:125px;left:700px;font-size:0.9em"><b>IV</b></div>
+     <div class="CAT"name="fig5"style="display:none;position:absolute;top:200px;left:260px;font-size:0.9em"><b>SEP</b></div>
+     <div class="CAT"name="fig5"style="display:none;position:absolute;top:200px;left:600px;font-size:0.9em"><b>III</b></div>
+     <div class="CAT"name="fig5"style="display:none;position:absolute;top:200px;left:480px;font-size:0.9em"><b>II</b></div>
+     <div class="CAT"name="fig5"style="display:none;position:absolute;top:200px;left:400px;font-size:0.9em"><b>I</b></div>
+    
+     <div class="CAT"name="fig6"style="display:none;position:absolute;top:350px;left:475px;font-size:0.9em"><b>Not Regulated</b></div>
+     <div class="CAT"name="fig6"style="display:none;position:absolute;top:200px;left:260px;font-size:0.9em"><b>SEP</b></div>
+     <div class="CAT"name="fig6"style="display:none;position:absolute;top:270px;left:640px;font-size:0.9em"><b>III</b></div>
+     <div class="CAT"name="fig6"style="display:none;position:absolute;top:270px;left:560px;font-size:0.9em"><b>II</b></div>
+     <div class="CAT"name="fig6"style="display:none;position:absolute;top:270px;left:460px;font-size:0.9em"><b>I</b></div>
+    
+     <div class="CAT"name="fig7"style="display:none;position:absolute;top:350px;left:475px;font-size:0.9em"><b>Not Regulated</b></div>
+     <div class="CAT"name="fig7"style="display:none;position:absolute;top:235px;left:260px;font-size:0.9em"><b>SEP</b></div>
+     <div class="CAT"name="fig7"style="display:none;position:absolute;top:180px;left:580px;font-size:0.9em"><b>III</b></div>
+     <div class="CAT"name="fig7"style="display:none;position:absolute;top:180px;left:480px;font-size:0.9em"><b>II</b></div>
+     <div class="CAT"name="fig7"style="display:none;position:absolute;top:180px;left:430px;font-size:0.9em"><b>I</b></div>
+    
+     <div class="CAT"name="fig8"style="display:none;position:absolute;top:350px;left:475px;font-size:0.9em"><b>Not Regulated</b></div>
+     <div class="CAT"name="fig8"style="display:none;position:absolute;top:235px;left:260px;font-size:0.9em"><b>SEP</b></div>
+     <div class="CAT"name="fig8"style="display:none;position:absolute;top:125px;left:680px;font-size:0.9em"><b>III</b></div>
+     <div class="CAT"name="fig8"style="display:none;position:absolute;top:180px;left:680px;font-size:0.9em"><b>II</b></div>
+     <div class="CAT"name="fig8"style="display:none;position:absolute;top:265px;left:680px;font-size:0.9em"><b>I</b></div>
+    
+     <div class="CAT"name="fig9"style="display:none;position:absolute;top:350px;left:475px;font-size:0.9em"><b>Not Regulated</b></div>
+     <div class="CAT"name="fig9"style="display:none;position:absolute;top:235px;left:260px;font-size:0.9em"><b>SEP</b></div>
+     <div class="CAT"name="fig9"style="display:none;position:absolute;top:125px;left:680px;font-size:0.9em"><b>II</b></div>
+     <div class="CAT"name="fig9"style="display:none;position:absolute;top:180px;left:680px;font-size:0.9em"><b>I</b></div>
+         
+     <div class="CAT"name="fig10"style="display:none;position:absolute;top:350px;left:475px;font-size:0.9em"><b>Not Regulated</b></div>
+     <div class="CAT"name="fig10"style="display:none;position:absolute;top:125px;left:650px;font-size:0.9em"><b>III</b></div>
+     <div class="CAT"name="fig10"style="display:none;position:absolute;top:240px;left:480px;font-size:0.9em"><b>II</b></div>
+     <div class="CAT"name="fig10"style="display:none;position:absolute;top:240px;left:400px;font-size:0.9em"><b>I</b></div>
+    
+   </div>
+     
+   <div>
+    <div id="footerright" media="print" class="showfoot">
+      <div style="padding:20px;display:inline; float:left;">
+        Design & Developed By Sheranton Web Systems ->><a target="_blank" href="https://sheranton.co.za/Contact/">Report Bug</a>
+      </div>
+      <div style="display:inline; float:right;">
+        <a style="float:right;margin-right:-200px;"target="_blank" href="https://www.sheranton.co.za">
+          <img  src= "https://www.sheranton.co.za/img/slogot.svg" width="30%"/>
+        </a>
+      </div>
+    </div>
+   </div>
+
+</body>
+<script type="text/javascript" src="disclaimer.js"></script>
+</html>
