@@ -206,8 +206,8 @@
           options.title="Figure 6";
           options.hAxis.viewWindow.max=10001;
           options.vAxis.viewWindow.max=100001;
-          options.hAxis.viewWindow.min=0.1;
-          options.vAxis.viewWindow.min=0.1;
+          options.hAxis.viewWindow.min=0.9;
+          options.vAxis.viewWindow.min=0.9;
           options.hAxis.title="Diameter (DN) mm";
           var elem = document.getElementsByClassName("CAT");
           for (var i=0; i<elem.length;i++)
@@ -228,8 +228,8 @@
           options.title="Figure 7";
           options.hAxis.viewWindow.max=100001;
           options.vAxis.viewWindow.max=1000001;
-          options.hAxis.viewWindow.min=0.1;
-          options.vAxis.viewWindow.min=0.1;
+          options.hAxis.viewWindow.min=0.9;
+          options.vAxis.viewWindow.min=0.9;
           options.hAxis.title="Diameter (DN) mm";
           var elem = document.getElementsByClassName("CAT");
           for (var i=0; i<elem.length;i++)
@@ -250,8 +250,8 @@
           options.title="Figure 8";
           options.hAxis.viewWindow.max=10001;
           options.vAxis.viewWindow.max=1000001;
-          options.hAxis.viewWindow.min=0.1;
-          options.vAxis.viewWindow.min=0.1;
+          options.hAxis.viewWindow.min=0.9;
+          options.vAxis.viewWindow.min=0.9;
           options.hAxis.title="Diameter (DN) mm";
           var elem = document.getElementsByClassName("CAT");
           for (var i=0; i<elem.length;i++)
