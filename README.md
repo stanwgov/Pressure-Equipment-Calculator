@@ -1,5 +1,5 @@
 # Pressure-Equipment-Calculator
-Interactive Graphs based on PER & SANS 347
+Interactive Graphs based on PER & SANS 347 (2012)
 
 Access the web app deployed : <ins> https://stanwgov.github.io/Pressure-Equipment-Calculator/ </ins>
 
